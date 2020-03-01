@@ -1,0 +1,49 @@
+/* 
+    Un po' di stile per il sito
+*/
+#content {
+    width: 100%;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 0 5px rgb(218, 218, 218);
+    padding: 10px 50px;
+    align-items: center;
+}
+
+/*
+    Codice css per la sidebar quando non è visibile
+*/
+#sidebar {
+    /* Codice css per la sidebar come se fosse visibile normalmente */
+    position: fixed; /* Questo posiziona la sidebar in una posizione fissa */
+    top: 0; /* Che vada dall'alto */
+    bottom: 0; /* Verso il basso */
+    left: 0; /* E che sia attaccata al bordo */
+    background-color: white; /* Che abbia uno sfondo di colore bianco */
+    padding: 0 40px; /* E un padding all'interno per renderla più bella da vedere */
+
+    /* Come posizione iniziale la spostiamo del 100%(ovvero la larghezza della sidebar) a sinistra */
+    /* In questo modo va fuori dallo schermo e non si vede*/
+    transform: translateX(-100%);
+
+    /* Transition fa in modo che appena cambiamo la posizione 
+       essa venga animata automaticamente (animazione di 0.5 secondi) */
+    transition: transform 0.5s, box-shadow 0.5s; /* Ho anche messo box-shadow che ci servirà in seguito */
+}
+
+/* 
+    Codice css per la sidebar quando è visibile
+*/
+#sidebar.visible {
+    /* Quando dal javascript aggiungiamo alla sidebar la classe visibile
+       Essa deve tornare alla posizione iniziale, ovvero da -100% a 0 */
+    transform: translateX(0);
+
+    /* La box-shadow scritta in questo modo permette di fare
+       un ombra uniforme su tutto il sito quando si apre la sidebar
+       così da essere più oscurato*/
+    box-shadow: 0 0 0 50000px rgba(0, 0, 0, 0.5); /* 0.5 indica che è trasparente al 50% */
+}
